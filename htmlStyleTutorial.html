@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		
+		<title> HTML Style Tutorial</title> <!--- Title of the page --->
+		<link rel = "stylesheet" type = "text/css" href = "cssTutorial2.css"></link>
+		
+		<!--- Roboto font --->
+		<link rel = "stylesheet" href = "https://fonts.googleapis.com/css?family=Roboto"></link>
+		
+		<!--- Mochiy Pop P One font --->
+		<link rel="preconnect" href="https://fonts.googleapis.com"></link>
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
+		<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet"></link>
+		
+		<style>
+			body
+			{
+				font-family: Roboto;
+			}
+			p, h2, h1 /* Styles based on tag name*/
+			{
+				background-color: yellow;
+				color: green;
+				border-bottom: 5px dashed green;
+				border-top: 6px groove blue;
+				border-left: 3px ridge red;
+				border-right: 5mm inset green;
+			}
+				
+			.classRedText /* Styles based on class name*/
+			{
+				text-size: 10px;
+				color: red;
+			}
+				
+			#p2 /* Styles based on id name*/
+			{
+				font-size: 40px;
+				font-family: 'Mochiy Pop P One', sans-serif;
+				color: purple;
+				background-image: url("img/CakeForTony.png");
+				border: 5px solid green;
+			}
+			#p2:hover
+			{
+				background-image: url("img/GiornoGiovanaKirby.png");
+			}
+			
+			#a2:link 
+			{
+				color: aqua;
+			}
+			
+			#a2:visited
+			{
+				color: orange;
+			}
+			#logo
+			{
+				float:right;
+			}
+			p 
+			{
+				clear:left;
+			}
+			
+			#div1
+			{
+				float: left;
+				width: 40%;
+				height: 40%;
+				background-color: yellow;
+			}
+			
+			#div2
+			{
+				float: left;
+				width: 40%;
+				height: 40%;
+				background-color: green;
+			}
+
+			
+			ul {
+				list-style-type: none;
+				overflow: hidden;
+			}
+			
+			li {
+				float: left;
+			}
+			
+			a {
+				width: 120px;
+				display: inline-block;
+				background-color: aqua;
+			}
+			a:hover  {
+				background-color: lightblue;
+			}
+		</style>
+		
+		<meta charset= "UTF-8"> </meta> <!--- Converts ASCII to UTF-8 so it covers almost all characters and symbols in the world --->
+		<meta name = "description" content = "HTML Tutorial"></meta> <!--- Displays a short description when searched --->
+		<meta name = "keywords" content = "Travel,Free,Cheap"></meta> <!--- Words used to search this site--->
+		<meta name = "author" content = "Im not giving you my name"></meta> <!--- Displays author of the page --->
+		<meta name = "viewport" content = "width = device-width, intitial-scale = 1.0"></meta> <!--- Sizes the page to scale for all devices--->
+		
+	</head>
+	
+	<body>
+		<!--- Displays audio controls and plays it--->
+		<audio controls = "controls" src= "music/Beastars OP - Wild Side _ FULL ENGLISH Cover by We.B ft.Voice of Legosi - Jonah Scott.mp3" type = "audio.mpeg" ></audio>
+		<br/> 
+		<!--Play youtube video-->
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/kNWA0caWKtg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<br/>
+		<!--Plays video-->
+		<video width = "600px" height = "900px" src = "Steven The O'hare guy.mp4" controls = "controls"></video>
+		<br/>
+		<nav>
+			<ul>
+				<a href="http://apple.com">Apple</a>
+				<a href="http://youtube.com">Youtube</a>
+				<a href="http://google.ca">Google</a>
+			</ul>
+		</nav>
+		
+		<!--- links --->
+		<div id= "div1">
+			<a href="http://sait.ca">SAIT</a>
+			<br/>
+			<a id = "a2" href="http://ucalgary.ca">University Of Calgary</a>
+			<br/>
+			<a id = "a3" href="http://microsoft.com">Microsoft</a>
+			<img id= "logo" src ="img/TheBagCompanyLogo.png" width = "5%"></img>
+		</div>
+		
+		
+		<div id = "div2">
+			<p>Para1</p>
+			
+			<p id = "p2">Para2</p>
+			
+			<p class = "classRedText">Para3</p>
+			
+			<p class = "classRedText">Para4</p>
+		</div>
+		
+		<h1 class = "classRedText"> Heading 1</h1>
+		<h1> Heading 2</h1>
+		<h2> Heading 2 - 1</h2>
+		<h2> Heading 2 - 2</h2>
+
+		<ol>
+			<li> Item 1</li>
+			<li class = "classRedText"> Item 2</li>
+			<li> Item 3</li>
+		</ol>
+			
+		<p>Para5</p>
+			
+		<p>Para6</p>
+	
+		
+	</body>
+</html>
