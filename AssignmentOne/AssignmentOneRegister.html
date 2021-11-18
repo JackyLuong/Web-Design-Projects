@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Travel Agency Registry</title> <!--- Title of the page --->
+		
+		<meta charset = "UTF-8"> </meta> <!--- Converts ASCII to UTF-8 so it covers almost all characters and symbols in the world --->
+		<meta name = "description" content = "HTML Tutorial"></meta> <!--- Displays a short description when searched --->
+		<meta name = "keywords" content = "Travel,Free,Cheap"></meta> <!--- Words used to search this site--->
+		<meta name = "author" content = "Im not giving you my name"></meta> <!--- Displays author of the page --->
+		<meta name = "viewport" content = "width = device-width, initial-scale = 1.0"></meta> <!--- Sizes the page to scale for all devices--->
+
+		<!-- BootStrap CSS only -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<!-- BootStrap JavaScript Bundle with Popper -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+		<script src="AssignmentOneRegisterScript_V1.js"></script>
+		
+		<style>
+			/* Makes all paragraph descriptions of input fields hidden*/
+			.description
+			{
+				visibility: hidden;
+				position: absolute;
+				top: 60px;
+				margin-bottom: 50px;
+				left:12px;
+				text-align: left;
+				color: green;
+			}
+			#message
+			{
+				color:red;
+				left: 0;
+				margin-left: 12px;
+				margin-top: 30px;
+			}
+		</style>
+	</head>
+
+	<!--Disables input fields on load except first name-->
+	<body onload = "disableAll();">
+		<div class="container-fluid pt-3 bg-dark text-white">
+			<!--- heading and its bolded --->
+			<h1> <b> Registration Page </b> </h1>
+		</div>
+		
+		<!--Displays error message for the user to correct their infomation in the appropriate input field-->
+		<p id = "message"></p>
+
+		<form method = "post" action = "bouncer.php" class = "container-fluid">
+			<div id = "userInfo">
+				<!--Description of each input field and what is required of them-->
+				<p class ="description" id = "fNameDescription">Put your first name. No special characters or spaces.</p>
+				<p class ="description" id = "lNameDescription">Put your last name. No special characters or spaces.</p>
+				<p class ="description" id = "emailDescription">Put your email. Requires an @ sign.</p>
+				<p class ="description" id = "phoneDescription">Put your phone number, must follow this format: 123-123-1234.</p>
+				<p class ="description" id = "countryDescription">Select a country</p>
+				<p class ="description" id = "postalDescription">Put your Postal Code, must follow this format: a1a 1a1. Can be uppercase or lowercase.</p>
+				<p class ="description" id = "paymentDescription">Select a form of payment</p>
+
+				<!--- Label for user's First Name --->
+				<label for="firstName">First Name: </label>
+				<!--- textbox for user to type their name, max length is 1000 and user has to to type something in before submitting --->
+				<input type ="text" maxLength = "1000" name = "first name"  id = "fName" onchange = "checkTextBox('fName','lName');" onfocus="toVisible('fNameDescription');"></input>
+
+				<br/>
+
+				<!--- Label for user's Last Name --->
+				<label for="lastName">Last Name: </label>
+				<!--- textbox for user to type their name, max length is 1000 and user has to to type something in before submitting --->
+				<input type ="text"  maxLength = "1000" name = "last name" id = "lName" onchange = "checkTextBox('lName','emailId');" onfocus="toVisible('lNameDescription');"></input>	
+				
+				<br/>
+				
+				<!--- Label for user's email--->
+				<label for="userEmail">Email: </label>
+				<!--- textbox for user to type their email, user has to to type something in before submitting and have an @ sign--->
+				<input type ="email" name = "userEmail" required = "required" id = "emailId" onchange = "toEnable('emailId', 'phoneId');" onfocus="toVisible('emailDescription');"></input>
+				
+				<br/>
+				
+				<!--- Label for user's phone--->
+				<label for="userPhone">Phone: </label>
+				<!--- textbox for user to type their phone, has to follow the pattern--->
+				<input type ="tel" id = phoneId pattern = "[0-9]{3}-[0-9]{3}-[0-9]{4}" name = "userPhone" onchange = "toEnable('phoneId', 'countryId');" onfocus="toVisible('phoneDescription');"></input>
+
+				<br/>
+				
+				<!--- Label for user's country--->
+				<label for="country">Country: </label>
+				<!--- textbox for user to type their phone, has to follow the pattern--->
+				<select name = "country" id= "countryId" onchange= "toEnable('countryId', 'postalId');" onfocus="toVisible('countryDescription');">
+					<option value = "N/A">Select a country</option>
+					<option value = "CA">Canada</option>
+					<option value = "US">United States</option>
+					<option value = "MX">Mexico</option>
+					<option value = "CH">China</option>
+				</select>
+
+				<br/>
+
+				<label for="postal">Postal Code: </label>
+				<input type = "text" id = postalId onchange = "checkPostal('postalId');" onfocus="toVisible('postalDescription');">
+				<br/>
+				
+				<div id="creditMethod">
+					<!--- Label for user's credit card type--->
+					<label for="ccType">Credit Card Type: </label>
+					<!--- Displays buttons for user to select their type of credit card--->
+					Visa: <input type ="radio" name = "ccType" value ="v" onfocus="toVisible('paymentDescription');" onclick="readyToSubmit()"></input> 
+					MasterCard: <input type ="radio" name = "ccType" value ="m" onfocus="toVisible('paymentDescription');" onclick="readyToSubmit()"></input>
+					AmericanExpress: <input type ="radio" name = "ccType" value ="a" onfocus="toVisible('paymentDescription');" onclick="readyToSubmit()"></input>
+				</div>
+				
+				<br/>
+				
+				<!--- Button used to submit data --->
+				<input type ="submit" class= "btn btn-dark white-text" name="Done" id= "submitButton" onclick = "return validate();" id = submitButton></input>
+			</div>
+			<!--- Button used to reset the fields -->
+			<button type ="reset" class = "btn btn-dark white-text" onclick = "return userConfirm();" id = "resetButton"> Reset</button>
+			
+			<br/>
+		</form> 
+
+		<footer>
+			<!-- Displays copyright line and the current date-->
+			This Page is copyrighted &#169; to me, 			
+			<script> document.write(myDate.getFullYear() + "/ " + months[myDate.getMonth()] + "/ " + myDate.getDate()); </script>
+		</footer>
+	</body>
+</html>

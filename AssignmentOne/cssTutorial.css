@@ -1,0 +1,33 @@
+			/* Style for all images */
+			img
+			{
+				width: 20%;
+			}
+			
+			/* Style for all nav and links */
+			nav
+			{
+				background-color: yellow;
+				float:left;
+			}
+			
+			/* Style for header */
+			.headings
+			{
+				background-color: pink;
+				font-size: 30px;
+			}
+			
+			/* Style for footer */
+			.footers
+			{
+				background-color: green;
+				height: 20px;
+			}
+			
+			/* Style for id "travelImages */
+			#travelImages
+			{
+				background-color: lightblue;
+			}
+			

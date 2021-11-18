@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<title> Travel Agency Index </title> <!--- Title of the page --->
+		
+		<meta charset = "UTF-8"> </meta> <!--- Converts ASCII to UTF-8 so it covers almost all characters and symbols in the world --->
+		<meta name = "description" content = "HTML Tutorial"></meta> <!--- Displays a short description when searched --->
+		<meta name = "keywords" content = "Travel,Free,Cheap"></meta> <!--- Words used to search this site--->
+		<meta name = "author" content = "Im not giving you my name"></meta> <!--- Displays author of the page --->
+		<meta name = "viewport" content = "width = device-width, initial-scale = 1.0"></meta> <!--- Sizes the page to scale for all devices--->
+		
+		<!--CSS Stylesheet-->
+		<link rel = "stylesheet" type ="text/css" href = "cssTutorial.css"></link>
+		<!--JQuery 3.6.0-->
+		<script src = "jquery-3.6.0.js"></script>
+		
+		<script>
+            //Sets an array for images 
+			var travelImages = new Array();
+			for(i = 0; i <3; i++)
+			{
+				travelImages[i] = new Image();
+				travelImages[i].src = ("img/Cake" + i + ".png");
+			}
+			var linksForImages = ["https://www.youtube.com/watch?v=vGE-RfP6KRE", "https://www.youtube.com/watch?v=Y9l8iu5J6rs", "https://www.youtube.com/watch?v=wfPt0r0Nl5o"];
+			//Description of each cake that the user can travel to in minecraft
+			var travelDescs = ["This is the Tony's cake.","This is the Ella's cake.", "This is the Jacky's"]
+
+            //shows image at "img1"
+			function showImage(index)
+			{
+				document.getElementById("img1").src = travelImages[index].src;
+			}
+
+			//Opens a new window to a cake tutorial video for 5 seconds before it closes.
+			function openLink(index)
+			{
+				newWin = open(linksForImages[index],"", "height= 600, width= 900, top= 200, left= 200");
+				setTimeout(function()
+				{
+					newWin.close();
+				}, 5000);
+			}
+
+			//Animates image to constantly move from one side of the screen to the other
+			$(document).ready(function()
+			{
+				//Moves image to the left and delays 3 seconds before it calls animateRight()
+				function animateSideToSide(distance)
+				{
+					$("#movingKirby").animate({left: distance}, "slow");
+					setTimeout(animateRight,3000);
+				}
+				//moves image to the right
+				function animateRight()
+				{
+					$("#movingKirby").animate({left: 0}, "slow");
+				}
+				
+				//moves the image when the document loads to hide the first 6 second delay from setInterval.
+				animateSideToSide();
+
+				//Every 6 seconds it will call a function to move the image side to side.
+				setInterval(function()
+				{
+					var screenWidth = window.innerWidth - 100;
+					animateSideToSide(screenWidth);
+				}, 7000);
+			})
+		</script>
+
+		<style>
+			body
+			{
+				background-image: url("img/white-background.jpg");
+			}
+			li
+			{
+				color:black;
+			}
+			ol >li:hover
+			{
+				color:blue;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<!--- Heading --->
+		<section class= "headings">
+			<header>
+				<!--- Displays image of bag logo and text next to it --->
+				<img src="img\TheBagCompanyLogo.png" style="width:2%; height:2%"></img> 
+				<b>Weclome To Travel Experts</b>
+			</header>
+		</section>
+		
+		<p> 
+			<article>
+				<img id ="img1" src =""></img>
+				<ol>
+					<!--Creates a list of descriptions of the images.
+						Changes image when one of them is hovered.
+						Directs user to a cake video when the press on the description.-->
+					<script>
+						for(i = 0; i < travelImages.length; i++)
+						{
+							document.write("<li onmouseover ='showImage("+ i + ");' onclick = 'openLink("+ i + ");'>" + travelDescs[i] + "</li>");
+						}
+					</script>
+				</ol>
+			</article>
+			
+			<!--- breaks to new line --->
+			<br/>
+			
+			<!--- Displays links to other pages -->
+			<nav>
+				<a href = "http://localhost/AssignmentOne/AssignmentOneContact.html"> 
+					Contact Information
+				</a>
+				|	
+				<a href = "http://localhost/AssignmentOne/AssignmentOneRegister.html"> 
+					Registry
+				</a>
+			</nav>
+
+			<br/>
+			
+			<!--- footer --->
+			<section class = "footers">
+				<footer>
+					This Page is copyrighted &#169; to me, 2021
+				</footer>
+			</section>
+			
+			<img id= "movingKirby" src ="img/GiornoGiovanaKirby.png" style = "position: relative; width: 5%"></img>
+		</p>
+	</body>
+</html>
