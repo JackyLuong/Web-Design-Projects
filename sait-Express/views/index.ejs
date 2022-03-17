@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Index page</title>
+		<script>
+			var travelImages = ["car1", "car1", "car1"];
+			
+			var travelURLs = ["https://www.chichenitza.com", "http://cntower.ca", "https://en.wikipedia.org/wiki/Alcatraz_Island"];
+			
+			function openWindow(index)
+			{
+				var win = open(travelURLs[index], "", "height=400, width=600, top=100, left=100");
+				var timer = setTimeout(function(){
+						win.close();
+					}, 3000);
+			}
+			
+			function showImage(index)
+			{
+				document.getElementById("img1").src = travelImages[index];
+			}
+			
+			var truckLeft = 0;
+			var forward = true;
+			function moveTruck()
+			{
+				console.log("moveTruck: " + truckLeft);
+				if (truckLeft >= window.innerWidth)
+				{
+					forward = false;
+				}
+				if (truckLeft <= 0)
+				{
+					forward = true;
+				}
+				if (forward)
+				{
+					truckLeft += 5;
+				}
+				else
+				{
+					truckLeft -= 5;
+				}
+				var truck = document.getElementById("img2");
+				truck.style.left = truckLeft + "px";
+			}
+		</script>
+		<link rel="stylesheet" type="text/css" href="styles.css" />
+		<style>
+			body {
+				background-image: url("car1");
+			}
+			
+			#img1 {
+				position: absolute;
+				top: 200px;
+				right: 50px;
+			}
+			
+			#img2 {
+				position: absolute;
+				top: 120px;
+				left: 0px;
+				height: 50px;
+				width: 75px;
+			}
+			
+			li {
+				color: green;
+			}
+			
+			ol > li:hover {
+				color: yellow;
+			}
+		</style>
+	</head>
+	<body onload="console.log('onload: ' + truckLeft);
+setInterval(function(){ moveTruck(); }, 50);">
+		<header>
+			<%-include("header.ejs", {welcome: "Welcome to Travel Experts"}); %>
+		</header>
+		<script>
+			var dayjs = new dayjs();
+			document.write(dayjs.format());
+		</script>
+		<nav>
+			<a href="register.html">Register</a> |
+			<a href="contact.html">Phone Book</a>
+		</nav>
+		<article>
+			<img id="img1" src="" />
+			<img id="img2" src="car1" />
+			<!--<table>-->
+			<ol>
+				<%
+				var i = 0;
+				descs.forEach(function(description){
+				%>
+					<li onclick="openWindow(<%= i %>)" onmouseover="showImage(<%= i %>)">
+						<%= description.desc%>
+					</li>
+
+					<%
+						i++;
+				 		});
+					;%>
+			</ol>
+			<!--</table>-->
+		</article>
+		<section>
+			<p>Info about us...</p>
+		</section>
+		
+		<footer>
+			<%-include("footer.ejs", {welcome: "This is the footer"}); %>
+		</footer>
+	</body>
+</html>

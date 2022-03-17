@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Travel Experts</title>
+    </head>
+    <body style ="background-color: white; color:black">
+        <h1>The Usual Customers</h1>
+        <table border = "1">
+            <% result.forEach((customer)=>{ %> 
+                <tr>
+                    <td><%for(let key in customer){ %>
+                            <%if (customer.hasOwnProperty(key)){%> 
+                                <td> <%=customer[key]%></td>
+                            <%}    
+                        } %>
+                    </td>
+                </tr>
+            <% }); %> 
+        </table>
+    </body>
+</html>

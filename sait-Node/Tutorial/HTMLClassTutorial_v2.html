@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		
+		<title>  </title> <!--- Title of the page --->
+		
+		<meta charset = "UTF-8"> </meta> <!--- Converts ASCII to UTF-8 so it covers almost all characters and symbols in the world --->
+		<meta name = "description" content = "HTML Tutorial"></meta> <!--- Displays a short description when searched --->
+		<meta name = "keywords" content = "Travel,Free,Cheap"></meta> <!--- Words used to search this site--->
+		<meta name = "author" content = "Im not giving you my name"></meta> <!--- Displays author of the page --->
+		<meta name = "viewport" content = "width = device-width, initial-scale = 1.0"></meta> <!--- Sizes the page to scale for all devices--->
+		
+        <script>
+            var myWin;
+
+            function Customer (fName, lName, phoneNum)
+            {
+                this.fName = fName;
+                this.lName = lName;
+                this.phoneNum = phoneNum
+                
+                //Gets First Name
+                this.getFname = function()
+                {
+                    return this.fName;
+                }
+                //Sets First Name
+                this.setFname = function(newFName)
+                {
+                    this.fName = newFName;
+                }
+
+                //Get Last Name
+                this.getLname =  function()
+                {
+                    return this.lName;
+                }
+                //Sets Last Name
+                this.setLname = function(newLName)
+                {
+                    this.lName = newLName;
+                }
+
+                //Get phone number
+                this.getPhoneNum = function()
+                {
+                    return this.phoneNum;
+                }
+                //Set phone number
+                this.setFname = function(newPhoneNum)
+                {
+                    this.phoneNum = newPhoneNum;
+                }
+            }
+
+            function openWindow()
+            {
+                myWin = open("htmlMyWindow_v2.html","","fullscreen = yes", "height= 200, width= 400, top= 200, left= 200");
+            }
+            function closeWindow()
+            {
+                myWin.close();
+            }
+
+            var customers = [new Customer("Jacky", "Luong", "403-922-1345"), 
+            new Customer("Kira", "Wong", "587-123-4444"),
+            new Customer("Sam", "Smith", "403-222-3333")];
+        </script>
+	</head>
+	
+	<body>
+        <ol id = "myList">
+            <script>
+                var theList = document.getElementById("myList");
+
+                for (i=0; i < customers.length; i++)
+                {
+                    var liElement = document.createElement("li");
+                    liElement.innerText = customers[i].getFname() + " " 
+                    customers[i].getLname();
+                    theList.appendChild(liElement);
+                    
+                }
+            </script>
+
+            <br/>
+
+            <script>
+                document.write("height: " + screen.height + "<br/>");
+                document.write("width: " + screen.width + "<br/>");
+                document.write("availheight: " + screen.availHeight + "<br/>");
+                document.write("availWidth: " + screen.availWidth + "<br/>");
+                document.write("colorDepth: " + screen.colorDepth + "<br/>");
+                document.write("pixelDepth: " + screen.pixelDepth + "<br/>");
+            </script>
+
+            <br/>
+            <button type = button onclick = "location.href = 'https://www.youtube.com/watch?v=-TXtyYZIiWc&list=RDMMftst0mGzIv8&index=4';">Song</button>
+            <button type = "button" onclick = "openWindow();">Open a Window</button>
+            <button type = "button" onclick = "closeWindow();">Close a Window</button>
+        </ol>
+	</body>
+</html>

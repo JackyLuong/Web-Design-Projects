@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		
+		<title> htmlMyWindow </title> <!--- Title of the page --->
+		
+		<meta charset = "UTF-8"> </meta> <!--- Converts ASCII to UTF-8 so it covers almost all characters and symbols in the world --->
+		<meta name = "description" content = "HTML Tutorial"></meta> <!--- Displays a short description when searched --->
+		<meta name = "keywords" content = "Travel,Free,Cheap"></meta> <!--- Words used to search this site--->
+		<meta name = "author" content = "Im not giving you my name"></meta> <!--- Displays author of the page --->
+		<meta name = "viewport" content = "width = device-width, initial-scale = 1.0"></meta> <!--- Sizes the page to scale for all devices--->
+		
+        <script>
+            function checkValue()
+            {
+                var postalField = document.getElementById("postal");
+                var reg = /(^[a-z]\d[a-z]\s?\d[a-z]\d$)|(^(\d){5}$)|(^(\d){5}-(\d){4}$)/i;
+                if(reg.test(postalField.value))
+                {
+                    alert("matched");
+                }
+                else
+                {
+                    alert("incorrect");
+                }
+
+            }
+        </script>
+	</head>
+	
+	<body>
+		<button type = "button" onclick = "self.close()">Close a Window</button>
+        postal Code: <input type = "text" id = "postal" onkeyup= "this.value = this.value.toUpperCase();"></input>
+        <button type ="button" onclick = "checkValue();">Check</button>
+	</body>
+</html>

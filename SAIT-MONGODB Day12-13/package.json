@@ -1,0 +1,14 @@
+{
+  "name": "sait-mongodb-day12-13",
+  "version": "1.0.0",
+  "description": "",
+  "main": "exmongodb-connect.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "harv",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.6.3"
+  }
+}

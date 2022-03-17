@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Index page</title>
+		<script src="dayjs.min.js"></script>
+		<script>
+			var travelImages = ["media/chichenitza.png", "media/photo5.gif", "media/alcatraz.png"];
+			var travelDescs = ["This is the main pyramid at Chichen Itza in Yucatan, Mexico",
+				"A view of CN Tower in Toronto, Ontario, Canada",
+				"Alcatraz Island seen from the tour boat"];
+			
+			var travelURLs = ["https://www.chichenitza.com", "http://cntower.ca", "https://en.wikipedia.org/wiki/Alcatraz_Island"];
+			
+			function openWindow(index)
+			{
+				var win = open(travelURLs[index], "", "height=400, width=600, top=100, left=100");
+				var timer = setTimeout(function(){
+						win.close();
+					}, 3000);
+			}
+			
+			function showImage(index)
+			{
+				document.getElementById("img1").src = travelImages[index];
+			}
+			
+			var truckLeft = 0;
+			var forward = true;
+			function moveTruck()
+			{
+				console.log("moveTruck: " + truckLeft);
+				if (truckLeft >= window.innerWidth)
+				{
+					forward = false;
+				}
+				if (truckLeft <= 0)
+				{
+					forward = true;
+				}
+				if (forward)
+				{
+					truckLeft += 5;
+				}
+				else
+				{
+					truckLeft -= 5;
+				}
+				var truck = document.getElementById("img2");
+				truck.style.left = truckLeft + "px";
+			}
+		</script>
+		<link rel="stylesheet" type="text/css" href="styles.css" />
+		<style>
+			body {
+				background-image: url("media/bckgrnd1.jpg");
+			}
+			
+			#img1 {
+				position: absolute;
+				top: 200px;
+				right: 50px;
+			}
+			
+			#img2 {
+				position: absolute;
+				top: 120px;
+				left: 0px;
+				height: 50px;
+				width: 75px;
+			}
+			
+			li {
+				color: green;
+			}
+			
+			ol > li:hover {
+				color: yellow;
+			}
+		</style>
+	</head>
+	<body onload="console.log('onload: ' + truckLeft);
+setInterval(function(){ moveTruck(); }, 50);">
+		<header>
+			<h1><img src="media/iggy.png" /> Welcome to Travel Experts</h1>
+		</header>
+		<script>
+			var dayjs = new dayjs();
+			document.write(dayjs.format());
+		</script>
+		<nav>
+			<a href="register.html">Register</a> |
+			<a href="contact.html">Phone Book</a>
+		</nav>
+		<article>
+			<img id="img1" src="" />
+			<img id="img2" src="media/old-truck.gif" />
+			<!--<table>-->
+			<ol>
+				<script>
+					for (i=0; i<travelImages.length; i++)
+					{
+						//this is the two-column example with an image tag for each image
+/*						document.write("<tr>");
+						document.write("<td>" + travelDescs[i] + "</td>");
+						document.write("<td><img src='" + travelImages[i] + "' /></td>");
+						document.write("</tr>");
+*/
+						//this is the optional challenge version of Day5 exercise
+						//which uses a single image tag and mouseover events
+						document.write("<li onclick='openWindow(" + i + ")' onmouseover='showImage(" + i + ")'>");
+						document.write(travelDescs[i]);
+						document.write("</li>");
+					}
+				</script>
+			</ol>
+			<!--</table>-->
+		</article>
+		<section>
+			<p>Info about us...</p>
+		</section>
+		
+		<footer>
+			This page is copyrighted &copy; to me, 2021
+		</footer>
+	</body>
+</html>
